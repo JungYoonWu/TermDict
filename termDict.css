@@ -1,7 +1,10 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    background-color: rgb(224, 194, 137);
 }
+
+
 
 body {
     display: flex;
@@ -16,8 +19,9 @@ body {
 }
 
 .header {
-    font-size: 1.4em;
-    margin-bottom: 10px;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .button-container {
@@ -49,30 +53,37 @@ body {
 }
 
 .inputArea button, .searchArea button {
-    width: 45px;
+    width: 60px;
     height: 45px;
-    font-size: 40px;
-    background-color: #000;
-    color: white;
+    font-size: 20px;
+    background-color: #FF6F61;
+    color: rgb(87, 67, 32);
     border: none;
     vertical-align: bottom;
     cursor: pointer;
 }
 
 .listArea {
+    border: 1px solid #eee;
     list-style: none;
     text-align: left;
     font-size: 1.3em;
 }
 
+.listArea .termNumber{
+    margin-right: 10;
+    font-weight: bold;
+}
+
 .listArea li {
+    border: 1px solid #eee;
     padding: 10px;
     display: flex;
     align-items: center;
 }
 
 .listArea .checkBtn {
-    border: none;
+    border: 1px solid #eee;
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -80,6 +91,7 @@ body {
 }
 
 .listArea .check {
+    border: 1px solid #eee;
     text-decoration: line-through;
 }
 
@@ -97,6 +109,31 @@ body {
     margin-right: 10px;
 }
 
+.editArea{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editArea input{
+    width: 80%;
+    border: 1px solid #eee;
+    font-size : 1.3em;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.editArea button{
+    width: 60px;
+    height: 45px;
+    font-size: 1.1em;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
 @media (max-width: 640px) {
     .container {
