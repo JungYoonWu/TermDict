@@ -15,6 +15,12 @@ window.onload = function() {
     const searchArea = document.querySelector("#searchArea");
     const listArea = document.querySelector("#listArea");
 
+    const editArea = document.querySelector("#editArea");
+    const editTermInput = document.querySelector("#editTermInput");
+    const editDefinitionInput = document.querySelector("#editDefinitionInput");
+    const saveEditBtn = document.querySelector("#saveEditBtn");
+    let currentEditIndex = null;
+
     addBtn.addEventListener("click", function() {
         inputArea.style.display = "block";
         searchArea.style.display = "none";
@@ -51,18 +57,34 @@ window.onload = function() {
         displayTerms(filteredTerms);
     });
 
+    saveEditBtn.addEventListener("click", function(){
+        if(editTermInput.value != "" && editDefinitionInput.value != null){
+            savedTerms[currentEditIndex].term = editTermInput.value;
+            savedTerms[currentEditIndex].definition = editDefinitionInput.value;
+            localStorage.setItem('terms', JSON.stringify(savedTerms));
+            displayTerms(savedTerms);
+            editArea.style.display="none";
+            alert("수정되었습니다.");
+        }
+    });
+
     function displayTerms(terms) {
         listArea.innerHTML = "";
-        terms.forEach(term => addTermToList(term));
+        terms.forEach((term, index) => addTermToList(term, index + 1));
         listArea.style.display = "block";
     }
 
-    function addTermToList(term) {
+    function addTermToList(term, number) {
         const liNode = document.createElement("li");
+        const termNumber = document.createElement("span");
         const checkBtn = document.createElement("button");
         const termText = document.createElement("span");
         const definitionText = document.createElement("span");
+        const editBtn = document.createElement("button");
         const delBtn = document.createElement("button");
+
+        termNumber.classList.add("termNumber");
+        termNumber.innerText = number + ". ";
 
         checkBtn.classList.add("checkBtn");
         checkBtn.innerHTML = term.check ? "✔" : "";
@@ -73,12 +95,17 @@ window.onload = function() {
         definitionText.classList.add("definitionText");
         definitionText.innerText = term.definition;
 
+        editBtn.classList.add("editBtn");
+        editBtn.innerText = "수정";
+
         delBtn.classList.add("delBtn");
         delBtn.innerText = "X";
 
+        liNode.appendChild(termNumber);
         liNode.appendChild(checkBtn);
         liNode.appendChild(termText);
         liNode.appendChild(definitionText);
+        liNode.appendChild(editBtn);
         liNode.appendChild(delBtn);
         listArea.appendChild(liNode);
 
@@ -89,10 +116,20 @@ window.onload = function() {
         });
 
         delBtn.addEventListener("click", function() {
-            const index = savedTerms.indexOf(term);
-            savedTerms.splice(index, 1);
+            const termIndex = savedTerms.indexOf(term);
+            savedTerms.splice(termIndex, 1);
             localStorage.setItem('terms', JSON.stringify(savedTerms));
-            liNode.remove();
+            displayTerms(savedTerms);
+        });
+
+        editBtn.addEventListener("click", function(){
+            currentEditIndex = number - 1;
+            editTermInput.value = term.term;
+            editDefinitionInput.value = term.definition;
+            editArea.style.display = "block";
+            inputArea.style.display = "none";
+            searchArea.style.display = "none";
+            listArea.style.display = "none";
         });
     }
 }
