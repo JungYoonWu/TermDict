@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    min-width: 320px;
+    max-width: 640px;
+    width: 100%;
+}
+
+.header {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin: 10px;
+}
+
+.button-container button {
+    margin-right: 5px;
+}
+
+.inputArea, .searchArea {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputArea input, .searchArea input {
+    width: 80%;
+    border: 1px solid #eee;
+    font-size: 1.3em;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.inputArea input:focus, .searchArea input:focus {
+    outline: none;
+}
+
+.inputArea button, .searchArea button {
+    width: 45px;
+    height: 45px;
+    font-size: 40px;
+    background-color: #000;
+    color: white;
+    border: none;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+.listArea {
+    list-style: none;
+    text-align: left;
+    font-size: 1.3em;
+}
+
+.listArea li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.listArea .checkBtn {
+    border: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.listArea .check {
+    text-decoration: line-through;
+}
+
+.listArea .delBtn {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.termText, .definitionText {
+    margin-right: 10px;
+}
+
+
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+    }
+
+    .inputArea input, .searchArea input {
+        width: 100%;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 959px) {
+    .container {
+        width: 80%;
+    }
+
+    .inputArea input, .searchArea input {
+        width: 90%;
+    }
+}
+
+@media (min-width: 960px) {
+    .container {
+        width: 60%;
+    }
+
+    .inputArea input, .searchArea input {
+        width: 95%;
+    }
+}

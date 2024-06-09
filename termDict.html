@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Term Dictionary</title>
+    <link rel="stylesheet" href="termDict.css">
+    <script defer src="termDict.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Term Dictionary</div>
+        <div class="button-container">
+            <button id="searchBtn">검색</button>
+            <button id="addBtn">등록</button>
+            <button id="viewAllBtn">전체보기</button>
+        </div>
+        <div class="inputArea" id="inputArea" style="display: none;">
+            <input id="termInput" type="text" placeholder="용어">
+            <input id="definitionInput" type="text" placeholder="정의/설명/출처">
+            <button id="addTermBtn">+</button>
+        </div>
+        <div class="searchArea" id="searchArea" style="display: none;">
+            <input id="searchInput" type="text" placeholder="검색할 용어">
+            <button id="searchTermBtn">검색</button>
+        </div>
+        <ul class="listArea" id="listArea" style="display: none;">
+        </ul>
+    </div>
+</body>
+</html>
